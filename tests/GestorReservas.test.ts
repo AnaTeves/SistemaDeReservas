@@ -1,11 +1,22 @@
 import { GestorReservas } from '../src/GestorReservas';
 import { Reserva } from '../src/Reserva';
+import * as fs from 'fs';
 
 describe('GestorReservas - Validación de superposiciones', () => {
   let gestor: GestorReservas;
+  const testFilePath = 'data/reservas-superposicion-test.json';
 
   beforeEach(() => {
-    gestor = new GestorReservas();
+    if (fs.existsSync(testFilePath)) {
+      fs.unlinkSync(testFilePath);
+    }
+    gestor = new GestorReservas(testFilePath);
+  });
+
+  afterEach(() => {
+    if (fs.existsSync(testFilePath)) {
+      fs.unlinkSync(testFilePath);
+    }
   });
 
   test('debe rechazar superposiciones para la misma unidad MIC-01', () => {
