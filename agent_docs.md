@@ -12,3 +12,11 @@
 - Decisión humana (Aceptar): Se aceptó el resultado sin correcciones.
 - Motivo: La implementación es limpia, modular y el testeo comprobó con éxito la recuperación de datos tras una nueva instancia y la liberación del horario de la unidad cancelada.
 - Evidencia: Commit [feat: persistencia en JSON y pruebas de estado]
+
+## Registro del Episodio 3: Interfaz API REST local
+- Objetivo y requisito: Exponer las funcionalidades del sistema mediante una API local para interactuar con el dominio de reservas (consultar disponibilidad, reservar, cancelar).  
+- Contexto y extracto de instrucción: Se indicó que la interfaz fuera una API simple. Instrucción: "Crea un archivo src/api.ts o src/server.ts que instancie Express... exponer 3 endpoints REST... Implementa manejo de errores básico devolviendo HTTP 400...".
+- Acción del agente: Instaló dependencias (supertest), creó server.ts con una arquitectura inyectable (createApp(gestor)) que evita colisiones de puertos en testing, implementó los 3 endpoints con sus códigos de error HTTP, y programó 6 tests de integración. Actualizó el package.json con el script de inicio.
+- Decisión humana (Aceptar): Se validó y aceptó el código resultante.
+- Motivo: La estructura propuesta facilita el testing unitario y cubre completamente la necesidad de una interfaz sin depender de despliegues complejos.  
+- Evidencia: Commit [feat: interfaz API REST con Express y test.]
