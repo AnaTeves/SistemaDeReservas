@@ -2,12 +2,14 @@
 
 ## 1. Especificación breve
 **Problema:** El laboratorio necesita gestionar el uso de su equipamiento, registrando reservas sin perder el historial y evitando superposiciones de turnos.
+
 **Alcance y Reglas:** 
 - Inventario fijo (MIC-01, MIC-02, OSC-01, MUL-01, FUE-01).
 - Se rechazan superposiciones de reservas activas para la misma unidad.
 - Se permiten límites consecutivos y reservas simultáneas de unidades distintas.
 - La cancelación conserva los datos pero libera el intervalo.
 - Las reservas deben persistir al reiniciar la aplicación.
+
 **Supuestos:** La API se consumirá de forma local, por lo que no se implementó autenticación. Los horarios se manejan en formato ISO 8601 (UTC).
 
 ## 2. Solución
@@ -25,6 +27,7 @@ Se optó por **Node.js con TypeScript** y **Express.js** para construir una API 
 { "unidad": "MIC-01", "solicitante": "Juan", "inicio": "2026-11-10T10:00:00Z", "fin": "2026-11-10T11:00:00Z" }
 // Response (201 Created)
 { "id": "12345", "unidad": "MIC-01", "activa": true, ... }
+```
 
 ## 3. Preparación del Agente
 **Entorno:** Se utilizó el IDE Windsurf (Cascade) interactuando directamente con el repositorio local.
