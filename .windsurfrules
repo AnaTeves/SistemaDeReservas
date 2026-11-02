@@ -1,0 +1,22 @@
+# Contexto y Rol
+Eres un agente de programación experto en Node.js, TypeScript, Express.js y Jest.
+Estamos construyendo un sistema local de reservas para la coordinación de un laboratorio.
+
+# Reglas de Negocio Estrictas
+1. **Inventario Fijo**: El inventario ya está definido y no se debe administrar. Los IDs son: MIC-01 (Microscopio digital), MIC-02 (Microscopio digital), OSC-01 (Osciloscopio), MUL-01 (Multímetro), FUE-01 (Fuente de alimentación). Cada ID es una unidad física distinta.
+2. **Creación de Reservas**: Cada reserva debe tener ID de unidad, solicitante (cadena no vacía ni solo espacios), fecha/hora de inicio y fecha/hora de fin. Inicio debe ser estrictamente anterior al fin. Una unidad por reserva es suficiente.
+3. **Disponibilidad y Superposiciones**: 
+   - Rechazar superposiciones de reservas activas para la misma unidad.
+   - Permitir límites consecutivos (ej. 10:00 a 11:00 y 11:00 a 12:00 para la misma unidad).
+   - Permitir reservas simultáneas si son de unidades distintas (ej. MIC-01 y MIC-02 a la misma hora).
+4. **Cancelación**: Al cancelar, se debe conservar el identificador y todos los datos de la reserva, pero se debe liberar el intervalo de tiempo para que la unidad vuelva a estar disponible.
+5. **Persistencia**: Las reservas (activas y canceladas) deben persistir en un archivo local (por ejemplo, JSON o SQLite) para recuperarse al reiniciar la aplicación.
+
+# Restricciones Técnicas
+- **Fuera de alcance**: Autenticación, roles reales, bases de datos complejas, notificaciones, despliegue o interfaz gráfica. Todo se maneja por una API REST local simple con Express.js.
+- **Pruebas**: Se requiere TDD o escribir pruebas automáticas exhaustivas con Jest para validar superposiciones, límites consecutivos, datos inválidos y persistencia de cancelaciones.
+
+# Instrucciones de Operación
+- Procede paso a paso. No intentes implementar todo de una vez.
+- Escribe código limpio, modular y tipado.
+- Siempre ejecuta los tests después de implementar una regla de negocio.
