@@ -73,7 +73,7 @@ Se consultó el intervalo vía GET /disponibilidad, confirmando que el sistema a
 - Contexto y extracto de instrucción: Se proporcionó el archivo .windsurfrules con el inventario fijo y reglas de superposición. Instrucción: "inicializa el proyecto Node.js con TypeScript... crea la entidad Reserva y la lógica de validación de disponibilidad en memoria... Crea un test básico en Jest".
 - Acción del agente: Generó la configuración base (package.json, tsconfig.json), las entidades Reserva.ts y GestorReservas.ts, y los tests unitarios. Inicialmente preparó todos los archivos de node_modules para ser subidos.
 - Decisión humana (Corregir y Aceptar): Se corrigió la acción del agente creando manualmente un .gitignore y haciendo git reset para excluir dependencias pesadas y cumplir con la entrega de solo código y archivos de bloqueo. Luego se aceptó el código de dominio porque los 4 tests automáticos pasaron correctamente.
-- Evidencia: Commit [5fe2ceb]
+- Evidencia: Commit [episodio1](https://github.com/AnaTeves/agentIA/commit/5fe2ceb8459e0c7b81fdbbda4e5a408ba7aba095)
 
 **Registro del Episodio 2: Persistencia y Estados**
 - Objetivo y requisito: Persistir las reservas y sus estados en un archivo local para recuperarlas al reiniciar la aplicación, garantizando que al cancelar se conserve el registro pero se libere el intervalo de tiempo.  
@@ -81,7 +81,7 @@ Se consultó el intervalo vía GET /disponibilidad, confirmando que el sistema a
 - Acción del agente: Implementó los métodos cargarReservas() y guardarReservas() utilizando la librería nativa fs. Modificó el constructor para aceptar un archivo de forma dinámica. Creó el test Persistencia.test.ts y agregó rutinas de limpieza (beforeEach/afterEach) para que las pruebas no colisionen.
 - Decisión humana (Aceptar): Se aceptó el resultado sin correcciones.
 - Motivo: La implementación es limpia, modular y el testeo comprobó con éxito la recuperación de datos tras una nueva instancia y la liberación del horario de la unidad cancelada.
-- Evidencia: Commit [57cc567]
+- Evidencia: Commit [episodio2](https://github.com/AnaTeves/agentIA/commit/57cc567e63c9d38ba09bbfafee3998c6cdff4888)
 
 **Registro del Episodio 3: Interfaz API REST local**
 - Objetivo y requisito: Exponer las funcionalidades del sistema mediante una API local para interactuar con el dominio de reservas (consultar disponibilidad, reservar, cancelar).  
@@ -89,7 +89,7 @@ Se consultó el intervalo vía GET /disponibilidad, confirmando que el sistema a
 - Acción del agente: Instaló dependencias (supertest), creó server.ts con una arquitectura inyectable (createApp(gestor)) que evita colisiones de puertos en testing, implementó los 3 endpoints con sus códigos de error HTTP, y programó 6 tests de integración. Actualizó el package.json con el script de inicio.
 - Decisión humana (Aceptar): Se validó y aceptó el código resultante.
 - Motivo: La estructura propuesta facilita el testing unitario y cubre completamente la necesidad de una interfaz sin depender de despliegues complejos.  
-- Evidencia: Commit [0e0f1da]
+- Evidencia: Commit [episodio3](https://github.com/AnaTeves/agentIA/commit/0e0f1da89adfac5d4e28e7f8f342d94f487c96eb)
 
 ## Verificacion de persistencia
 Se comprobó mediante un procedimiento manual reproducible creando una reserva vía POST, deteniendo el servidor, reiniciándolo e intentando consultar la disponibilidad vía GET, arrojando el estado ocupado esperado.
